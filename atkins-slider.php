@@ -13,6 +13,9 @@ class AtkinsSlider {
 
 	var $first_run = true;
 
+	// Gallery id, used for linking the lightbox
+	var $gallery = 0;
+
 	function __construct() {
 		add_action('init', array($this, 'init'));
 	}
@@ -62,7 +65,8 @@ class AtkinsSlider {
 
 	// add_data_to_container in jetpack
 	function gallery_style($html) {
-		
+		$this->gallery++;
+
 		return $html;
 	}
 
@@ -81,7 +85,7 @@ class AtkinsSlider {
 			sprintf(
 				'<a title="%1$s" data-lightbox="%2$s" ',
 				'title',
-				'gallery'
+				'gallery-'.$this->gallery
 			),
 			$html
 		);

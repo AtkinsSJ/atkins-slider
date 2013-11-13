@@ -20,6 +20,9 @@ class AtkinsSlider {
 	function init() {
 		// Frontend setup
 		if (!is_admin()) {
+			// Disable the default gallery style
+			add_filter('use_default_gallery_style', '__return_false');
+
 			add_filter('post_gallery', array($this, 'post_gallery'));
 			add_filter('gallery_style', array($this, 'gallery_style'));
 			add_filter( 'wp_get_attachment_link', array( $this, 'wp_get_attachment_link' ), 10, 2 );

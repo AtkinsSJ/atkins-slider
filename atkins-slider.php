@@ -31,11 +31,27 @@ class AtkinsSlider {
 		if ($this->first_run) {
 
 			wp_enqueue_script(
+				'lightbox',
+				plugins_url('lightbox/js/lightbox-2.6.min.js', __FILE__),
+				array('jquery'),
+				false,
+				true
+			);
+			wp_enqueue_style(
+				'lightbox',
+				plugins_url('lightbox/css/lightbox.css', __FILE__),
+				false,
+				false,
+				'all'
+			);
+
+			wp_enqueue_script(
 				'atkins-slider',
 				plugins_url('atkins-slider.js', __FILE__),
-				array('jquery'),
-				'1.0.0',
-				true );
+				array('jquery', 'lightbox'),
+				false,
+				true
+			);
 
 			$this->first_run = false;
 		}
@@ -44,7 +60,6 @@ class AtkinsSlider {
 	// add_data_to_container in jetpack
 	function gallery_style($html) {
 		
-
 		return $html;
 	}
 
@@ -53,6 +68,20 @@ class AtkinsSlider {
 		if ($this->first_run) {
 			return $html;
 		}
+
+		// What needs to be done:
+		// * Add title to the <a>, equal to the image title
+		// * Add data-lightbox attribute to <a>, equal to gallery name.
+
+		$html = str_replace(
+			'<a ',
+			sprintf(
+				'<a title="%1$s" data-lightbox="%2$s" ',
+				'title',
+				'gallery'
+			),
+			$html
+		);
 
 		return $html;
 	}

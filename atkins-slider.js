@@ -4,7 +4,7 @@
 jQuery(document).ready(function($) {
 	var createGallery = function(index, gallery) {
 
-		var slideChangeDelay = 2000;
+		var slideChangeDelay = 7000;
 		var visibleSlideIndex = 0;
 		var slideChangeTimeout;
 
@@ -32,7 +32,7 @@ jQuery(document).ready(function($) {
 
 			url = url.split('//', 2)[1];
 
-			// $img.attr('src', 'http://i1.wp.com/' + url + '?resize=640,480');
+			$img.attr('src', 'http://i1.wp.com/' + url + '?resize=640,480');
 			$img.addClass('slider-image');
 		});
 		// Set first thumbnail visible
@@ -49,7 +49,6 @@ jQuery(document).ready(function($) {
 		var displaySlide = function(index) {
 			if (index == visibleSlideIndex) return;
 
-			console.log("Switching to slide #" + index + ", current is " + visibleSlideIndex);
 			$thumbnails.eq(visibleSlideIndex).fadeOut(function() {
 				$(this).removeClass('current');
 			});

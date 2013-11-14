@@ -21,7 +21,7 @@
 
 	visibility: hidden;
 }
-.slider-item.current {
+.slider-item.visible {
 	visibility: visible;
 }
 

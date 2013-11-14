@@ -7,6 +7,10 @@ jQuery(document).ready(function($) {
 		console.log($gallery);
 		$gallery.addClass('slider-gallery');
 
+		var switchSlide = function(index) {
+			console.log("Switching to slide #" + index);
+		};
+
 		var $thumbnails = $gallery.children('.gallery-item');
 		$thumbnails.removeClass('gallery-item')
 					.addClass('slider-item');
@@ -18,8 +22,10 @@ jQuery(document).ready(function($) {
 
 			url = url.split('//', 2)[1];
 
-			$img.attr('src', 'http://i1.wp.com/' + url + '?resize=640,480');
+			// $img.attr('src', 'http://i1.wp.com/' + url + '?resize=640,480');
 		});
+		// Set first thumbnail visible
+		$thumbnails.first().addClass('visible');
 
 		// Create caption area
 		var $caption = $('<div>').addClass('slider-caption')
@@ -30,7 +36,13 @@ jQuery(document).ready(function($) {
 		var $dotList = $('<ol>').addClass('slider-dots')
 							.appendTo($gallery);
 		for (var i=0; i<$thumbnails.length; i++) {
-			$dotList.append( $('<li class="slider-dot" data-index="'+i+'">') );
+			var $dot = $('<li class="slider-dot" data-index="'+i+'">');
+
+			$dot.click(function() {
+				switchSlide( $(this).attr('data-index') );
+			})
+
+			$dotList.append( $dot );
 		}
 
 		// Hide caption elements

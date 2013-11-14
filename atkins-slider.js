@@ -5,6 +5,7 @@ jQuery(document).ready(function($) {
 	var createGallery = function(index, gallery) {
 		var $gallery = $(gallery);
 		console.log($gallery);
+			$gallery.addClass('slider-gallery');
 
 		var $thumbnails = $gallery.children('.gallery-item');
 

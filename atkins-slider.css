@@ -1,3 +1,20 @@
 /**
  * atkins-slider.css
  */
+.slider-gallery {
+	position: relative;
+}
+.slider-dots {
+	list-style: none;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+}
+.slider-dot {
+	display: inline-block;
+	width: 1em;
+	height: 1em;
+	background-color: gray;
+	margin-right: 0.5em;
+	cursor: pointer;
+}

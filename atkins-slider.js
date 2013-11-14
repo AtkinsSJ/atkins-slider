@@ -30,9 +30,16 @@ jQuery(document).ready(function($) {
 				$img = $a.children('img'),
 				url = $a.attr('href');
 
-			url = url.split('//', 2)[1];
+			if (url.contains('wp.com')) {
+				url = url.split('?')[0]
+					+ '?resize=640,480';
+			} else {
+				url = 'http://i1.wp.com/'
+					+ url.split('//', 2)[1]
+					+ '?resize=640,480';
+			}
 
-			$img.attr('src', 'http://i1.wp.com/' + url + '?resize=640,480');
+			$img.attr('src', url);
 			$img.addClass('slider-image');
 		});
 		// Set first thumbnail visible

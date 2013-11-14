@@ -22,6 +22,7 @@ jQuery(document).ready(function($) {
 			url = url.split('//', 2)[1];
 
 			// $img.attr('src', 'http://i1.wp.com/' + url + '?resize=640,480');
+			$img.addClass('slider-image');
 		});
 		// Set first thumbnail visible
 		$thumbnails.first().addClass('current');
@@ -29,7 +30,7 @@ jQuery(document).ready(function($) {
 		// Create caption area
 		var $caption = $('<div>').addClass('slider-caption')
 							.appendTo($gallery);
-		$caption.text("Slider Caption");
+		$caption.text( $thumbnails.first().find('a').attr('title') );
 
 		/**
 		 * Switch to the slide with the given index
@@ -45,6 +46,8 @@ jQuery(document).ready(function($) {
 			$thumbnails.eq(index).fadeIn(function() {
 				$(this).addClass('current');
 			});
+
+			$caption.text( $thumbnails.eq(index).find('a').attr('title') );
 
 			$dotList.children().removeClass('current')
 					.eq(index).addClass('current');

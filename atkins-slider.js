@@ -10,6 +10,16 @@ jQuery(document).ready(function($) {
 		var $thumbnails = $gallery.children('.gallery-item');
 		$thumbnails.removeClass('gallery-item')
 					.addClass('slider-item');
+		// Resize thumbnails
+		$thumbnails.find('a').each(function(i, a) {
+			var $a = $(a),
+				$img = $a.children('img'),
+				url = $a.attr('href');
+
+			url = url.split('//', 2)[1];
+
+			$img.attr('src', 'http://i1.wp.com/' + url + '?resize=640,480');
+		});
 
 		// Create caption area
 		var $caption = $('<div>').addClass('slider-caption')
@@ -22,8 +32,6 @@ jQuery(document).ready(function($) {
 		for (var i=0; i<$thumbnails.length; i++) {
 			$dotList.append( $('<li class="slider-dot" data-index="'+i+'">') );
 		}
-
-		// Resize thumbnails
 
 		// Hide caption elements
 		$gallery.find('dd').hide();

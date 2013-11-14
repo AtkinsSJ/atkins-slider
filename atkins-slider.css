@@ -21,7 +21,7 @@
 
 	display: none;
 }
-.slider-item.visible {
+.slider-item.current {
 	display: block;
 }
 
@@ -41,7 +41,11 @@
 	display: inline-block;
 	width: 1em;
 	height: 1em;
-	background-color: gray;
+	background-color: lightgray;
 	margin-right: 0.5em;
 	cursor: pointer;
+}
+.slider-dot.current,
+.slider-dot:hover {
+	background-color: gray;
 }

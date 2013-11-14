@@ -24,7 +24,7 @@ jQuery(document).ready(function($) {
 			// $img.attr('src', 'http://i1.wp.com/' + url + '?resize=640,480');
 		});
 		// Set first thumbnail visible
-		$thumbnails.first().addClass('visible');
+		$thumbnails.first().addClass('current');
 
 		// Create caption area
 		var $caption = $('<div>').addClass('slider-caption')
@@ -34,17 +34,20 @@ jQuery(document).ready(function($) {
 		/**
 		 * Switch to the slide with the given index
 		 */
-		var switchSlide = function(index) {
+		var displaySlide = function(index) {
 			if (index == visibleSlideIndex) return;
-			
+
 			console.log("Switching to slide #" + index);
 			$thumbnails.eq(visibleSlideIndex).fadeOut(function() {
-				$(this).removeClass('visible');
+				$(this).removeClass('current');
 			});
 			visibleSlideIndex = index;
 			$thumbnails.eq(index).fadeIn(function() {
-				$(this).addClass('visible');
+				$(this).addClass('current');
 			});
+
+			$dotList.children().removeClass('current')
+					.eq(index).addClass('current');
 		};
 
 		// Create dots
@@ -54,11 +57,12 @@ jQuery(document).ready(function($) {
 			var $dot = $('<li class="slider-dot" data-index="'+i+'">');
 
 			$dot.click(function() {
-				switchSlide( $(this).attr('data-index') );
+				displaySlide( $(this).attr('data-index') );
 			})
 
 			$dotList.append( $dot );
 		}
+		$dotList.children().first().addClass('current');
 
 		// Hide caption elements
 		$gallery.find('dd').hide();

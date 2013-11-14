@@ -3,7 +3,34 @@
  */
 .slider-gallery {
 	position: relative;
+
+	/* These lines make it keep an apect-ratio */
+	height: 0;
+	padding-bottom: 50%;
 }
+.slider-item {
+	/* slider-item fills the slider-gallery parent */
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+
+	padding: 0;
+	margin: 0;
+	
+	visibility: hidden;
+}
+.slider-item.current {
+	visibility: visible;
+}
+
+.slider-caption {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+}
+
 .slider-dots {
 	list-style: none;
 	position: absolute;

@@ -19,10 +19,10 @@
 	padding: 0;
 	margin: 0;
 
-	visibility: hidden;
+	display: none;
 }
 .slider-item.visible {
-	visibility: visible;
+	display: block;
 }
 
 .slider-caption {

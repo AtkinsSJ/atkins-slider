@@ -3,13 +3,12 @@
  */
 jQuery(document).ready(function($) {
 	var createGallery = function(index, gallery) {
+
+		var visibleSlideIndex = 0;
+
 		var $gallery = $(gallery);
 		console.log($gallery);
 		$gallery.addClass('slider-gallery');
-
-		var switchSlide = function(index) {
-			console.log("Switching to slide #" + index);
-		};
 
 		var $thumbnails = $gallery.children('.gallery-item');
 		$thumbnails.removeClass('gallery-item')
@@ -31,6 +30,22 @@ jQuery(document).ready(function($) {
 		var $caption = $('<div>').addClass('slider-caption')
 							.appendTo($gallery);
 		$caption.text("Slider Caption");
+
+		/**
+		 * Switch to the slide with the given index
+		 */
+		var switchSlide = function(index) {
+			if (index == visibleSlideIndex) return;
+			
+			console.log("Switching to slide #" + index);
+			$thumbnails.eq(visibleSlideIndex).fadeOut(function() {
+				$(this).removeClass('visible');
+			});
+			visibleSlideIndex = index;
+			$thumbnails.eq(index).fadeIn(function() {
+				$(this).addClass('visible');
+			});
+		};
 
 		// Create dots
 		var $dotList = $('<ol>').addClass('slider-dots')

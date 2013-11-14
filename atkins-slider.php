@@ -2,11 +2,12 @@
 /**
  * Plugin Name: AtkinsSlider
  * Plugin URI: http://samatkins.co.uk
- * Description: 
+ * Description: Turns Wordpress galleries into sliders, with a lightbox
  * Version: 1.0
  * Author: Samuel Atkins
  * Author URI: http://samatkins.co.uk
  * License: GPL2
+ * Makes use of Lightbox2, http://lokeshdhakar.com/projects/lightbox2/
  */
 
 class AtkinsSlider {

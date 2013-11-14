@@ -76,15 +76,13 @@ class AtkinsSlider {
 			return $html;
 		}
 
-		// What needs to be done:
-		// * Add title to the <a>, equal to the image title
-		// * Add data-lightbox attribute to <a>, equal to gallery name.
+		$attachment = get_post($attachment_id);
 
 		$html = str_replace(
 			'<a ',
 			sprintf(
 				'<a title="%1$s" data-lightbox="%2$s" ',
-				'title',
+				$attachment->post_excerpt,
 				'gallery-'.$this->gallery
 			),
 			$html

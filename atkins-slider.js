@@ -9,6 +9,9 @@ jQuery(document).ready(function($) {
 		var $gallery = $(gallery);
 		console.log($gallery);
 		$gallery.addClass('slider-gallery');
+		var $sliderFooter = $('<div>')
+							.addClass('slider-footer')
+							.appendTo($gallery);
 
 		var $thumbnails = $gallery.children('.gallery-item');
 		$thumbnails.removeClass('gallery-item')
@@ -29,7 +32,7 @@ jQuery(document).ready(function($) {
 
 		// Create caption area
 		var $caption = $('<div>').addClass('slider-caption')
-							.appendTo($gallery);
+							.appendTo($sliderFooter);
 		$caption.text( $thumbnails.first().find('a').attr('title') );
 
 		/**
@@ -55,7 +58,7 @@ jQuery(document).ready(function($) {
 
 		// Create dots
 		var $dotList = $('<ol>').addClass('slider-dots')
-							.appendTo($gallery);
+							.prependTo($sliderFooter);
 		for (var i=0; i<$thumbnails.length; i++) {
 			var $dot = $('<li class="slider-dot" data-index="'+i+'">');
 

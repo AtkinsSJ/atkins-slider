@@ -33,24 +33,29 @@ img.slider-image {
 	margin: 0;
 }
 
-.slider-caption {
+.slider-footer {
 	position: absolute;
-	left: 0;
 	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: rgba(0,0,0,0.8);
+	padding: 0.5em;
 }
-
+.slider-caption {
+	color: white;
+}
 .slider-dots {
 	list-style: none;
-	position: absolute;
-	right: 0;
-	bottom: 0;
+	float: right;
 }
 .slider-dot {
 	display: inline-block;
+	vertical-align: middle;
 	width: 1em;
 	height: 1em;
+	margin: 0 0.25em;
+
 	background-color: lightgray;
-	margin-right: 0.5em;
 	cursor: pointer;
 }
 .slider-dot.current,

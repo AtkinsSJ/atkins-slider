@@ -2,5 +2,9 @@
  * atkins-slider.js
  */
 jQuery(document).ready(function($) {
-	// alert("Hello!");
+	var createGallery = function($gallery) {
+		
+	};
+	
+	$('.gallery').each(createGallery);
 });

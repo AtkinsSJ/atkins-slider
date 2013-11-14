@@ -58,6 +58,13 @@ class AtkinsSlider {
 				false,
 				true
 			);
+			wp_enqueue_style(
+				'lightbox',
+				plugins_url('atkins-slider.css', __FILE__),
+				false,
+				false,
+				'all'
+			);
 
 			$this->first_run = false;
 		}

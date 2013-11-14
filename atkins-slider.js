@@ -4,14 +4,22 @@
 jQuery(document).ready(function($) {
 	var createGallery = function(index, gallery) {
 
+		var slideChangeDelay = 2000;
 		var visibleSlideIndex = 0;
+		var slideChangeTimeout;
 
-		var $gallery = $(gallery);
-		console.log($gallery);
-		$gallery.addClass('slider-gallery');
+		var $gallery = $(gallery)
+						.addClass('slider-gallery');
 		var $sliderFooter = $('<div>')
 							.addClass('slider-footer')
 							.appendTo($gallery);
+
+		// Bind mouseOver and mouseOut
+		$gallery.mouseenter(function() {
+			clearTimeout(slideChangeTimeout);
+		}).mouseleave(function(){
+			slideChangeTimeout = setTimeout(changeSlideAfterDelay, slideChangeDelay);
+		});
 
 		var $thumbnails = $gallery.children('.gallery-item');
 		$thumbnails.removeClass('gallery-item')
@@ -41,7 +49,7 @@ jQuery(document).ready(function($) {
 		var displaySlide = function(index) {
 			if (index == visibleSlideIndex) return;
 
-			console.log("Switching to slide #" + index);
+			console.log("Switching to slide #" + index + ", current is " + visibleSlideIndex);
 			$thumbnails.eq(visibleSlideIndex).fadeOut(function() {
 				$(this).removeClass('current');
 			});
@@ -72,6 +80,18 @@ jQuery(document).ready(function($) {
 
 		// Hide caption elements
 		$gallery.find('dd').hide();
+
+		// Start changing slide on regular intervals
+		var changeSlideAfterDelay = function() {
+			var nextIndex = parseInt(visibleSlideIndex) + 1;
+			if (nextIndex >= $thumbnails.length) {
+				nextIndex = 0;
+			}
+
+			displaySlide(nextIndex);
+			slideChangeTimeout = setTimeout(changeSlideAfterDelay, slideChangeDelay);
+		};
+		slideChangeTimeout = setTimeout(changeSlideAfterDelay, slideChangeDelay);
 	};
 
 	$('.gallery').each(createGallery);

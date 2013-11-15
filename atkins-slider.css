@@ -21,20 +21,10 @@
 	margin: 0;
 
 	display: none;
+	text-align: center;
 }
 .slider-item.current {
 	display: block;
-}
-
-.slider-item dt {
-	display: table;
-	width: 100%;
-	height: 100%;
-}
-.slider-item a {
-	display: table-cell;
-	vertical-align: middle;
-	text-align: center;
 }
 .slider-item .slider-image {
 	border: 0;

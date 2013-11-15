@@ -31,12 +31,10 @@ jQuery(document).ready(function($) {
 				url = $a.attr('href');
 
 			if (url.indexOf('wp.com') != -1) {
-				url = url.split('?')[0]
-					+ '?resize=640,480';
+				url = url.split('?')[0];
 			} else {
 				url = 'http://i1.wp.com/'
-					+ url.split('//', 2)[1]
-					+ '?resize=640,480';
+					+ url.split('//', 2)[1];
 			}
 
 			$img.attr('src', url)

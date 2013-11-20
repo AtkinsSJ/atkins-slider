@@ -13,6 +13,8 @@ jQuery(document).ready(function($) {
 		var $sliderFooter = $('<div>')
 							.addClass('slider-footer')
 							.appendTo($gallery);
+		
+		$gallery.find('p').remove();
 
 		// Bind mouseOver and mouseOut
 		$gallery.mouseenter(function() {
